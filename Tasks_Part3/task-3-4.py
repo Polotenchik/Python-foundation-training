@@ -16,8 +16,8 @@ def sumSeq(sequence):
 
     return sum
 
-print(sumSeq([1, 2, 3, [ 4, 5, ( 6, 7 )]])) #[1,2,3,4,5,6,7]
-print(sumSeq((1, 2, [3, 3], [ (5, 10), 7]))) #[1,2,3,4,5,6,7]
+print(sumSeq([1, 2, 3, [ 4, 5, ( 6, 7 )]])) #28
+print(sumSeq((1, 2, [3, 3], [ (5, 10), 7]))) #31
 
 input()
 
