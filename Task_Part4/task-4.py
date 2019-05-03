@@ -30,6 +30,10 @@ def log(func):
         execTime = (endTime - startTime).seconds
         output += ' execution time: ' + str(float(execTime)) + ' sec.'
 
+        file = open("log.txt", "a")
+        file.write(output + "\n")
+        file.close()
+
         print(output)
 
     return wrap
@@ -47,9 +51,9 @@ def bar(a, b, c, d):
 def spam(a):
     return a
 
-foo(1, 2, c=3)
-foo(1, 2)
-bar(1, 2, c = 3, d = 4)
-spam(a = 42)
+foo(1, 2, c=3) # foo; args: a=1, b=2; kwargs: c=3; execution time: 3.0 sec.
+foo(1, 2) # foo; args: a=1, b=2; execution time: 3.0 sec.
+bar(1, 2, c = 3, d = 4) #bar; args: a=1, b=2; kwargs: c=3, d=4; execution time: 3.0 sec.
+spam(a = 42) #spam; kwargs: a=42; execution time: 3.0 sec.
 
 input()
