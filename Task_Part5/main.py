@@ -7,6 +7,9 @@ class OrderedSet(collections.abc.MutableSet):
         self.map = {}
         if iterable is not None:
             self |= iterable
+    
+    def __getitem__(self, index):
+        return str(list(self)[index])
 
     def __iter__(self):
         return iter(self.items)
@@ -39,9 +42,33 @@ class OrderedSet(collections.abc.MutableSet):
         return "%s(%r)" % (self.__class__.__name__, sorted(list(self)))
 
 l = OrderedSet(['z', 'a', 'z', 'b', 'c'])
-l1 = OrderedSet([2, 1, 3, 7, 0])
+print(l)
+a = l[0]
+l.add('test');
+#del l[2] doesn't support
+q = OrderedSet(['a', 'b', 'z'])
+s = OrderedSet(['x', 'y', 'z'])
+
+#l1 = OrderedSet([2, 1, 3, 7, 0])
 
 print(l)
-print(l1)
+print(s)
+print(q)
+
+#Union sets
+r = q | s
+print('Union sets: ' + str(r))
+
+#Intersection sets
+r = q & s
+print('Intersection sets: ' + str(r))
+
+#Difference sets
+r = q - s
+print('Difference sets: ' + str(r))
+
+
+print(a)
+#print(l1)
 
 input()
