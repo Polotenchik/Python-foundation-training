@@ -11,6 +11,9 @@ class OrderedSet(collections.abc.MutableSet):
     def __getitem__(self, index):
         return str(list(self)[index])
 
+    def copy(self):
+        return self.__class__(self)
+
     def __iter__(self):
         return iter(self.items)
 
@@ -25,7 +28,6 @@ class OrderedSet(collections.abc.MutableSet):
 
     append = add
 
-
     def __contains__(self, key):
         return key in self.map
 
@@ -38,6 +40,9 @@ class OrderedSet(collections.abc.MutableSet):
                 if v >= i:
                     self.map[k] = v - 1
 
+    def index(self, key):
+        return self.map[key]
+
     def __str__(self):
         return "%s(%r)" % (self.__class__.__name__, sorted(list(self)))
 
@@ -45,7 +50,10 @@ l = OrderedSet(['z', 'a', 'z', 'b', 'c'])
 print(l)
 a = l[0]
 l.add('test');
-#del l[2] doesn't support
+c = l.copy()
+print('Copied ' + str(c))
+print('Length is: ' + str(len(c)))
+print(l.index('b'))
 q = OrderedSet(['a', 'b', 'z'])
 s = OrderedSet(['x', 'y', 'z'])
 
